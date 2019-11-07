@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `genres`
 --
-USE movies
+USE movies;
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE `genres` (
   `genre_id` int(11) NOT NULL,
@@ -95,11 +95,6 @@ INSERT INTO `movies` (`movie_id`, `movie_title`, `director`, `year`, `genre_id`)
 (27, 'Transcendence', 'Wally Pfister', 2014, 2),
 (28, 'Contact', 'Robert Zemekis', 1997, 2);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `people`
---
 
 DROP TABLE IF EXISTS `people`;
 CREATE TABLE `people` (
