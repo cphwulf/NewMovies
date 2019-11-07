@@ -24,7 +24,14 @@ public class MovieMapper {
 		// TODO: hent fra databasen
 		myConn = DBConnector.getConnector();
 		// skrevet en query
-		String query = "SELECT * FROM movies";
+		//String query = "SELECT * FROM movies";
+		// select m.movie_id, m.movie_title, m.director, m.year, g.genre_title 
+		//FROM movies m, genres g
+		//WHERE m.genre_id = g.genre_id;
+		String query = "";
+		query = "select m.movie_id, m.movie_title, m.director, m.year, g.genre_title";
+		query += " FROM movies m, genres g WHERE m.genre_id = g.genre_id";
+
 		// få en statement
 		stmt = myConn.createStatement();
 		// få fyret en query af
@@ -33,10 +40,12 @@ public class MovieMapper {
 			int movie_id = res.getInt("movie_id");
 			String movie_title = res.getString("movie_title");
 			String director = res.getString("director");
+			String genre = res.getString("genre_title");
 			//Date year = res.getDate("year");
 			//TODO: convert this to java date-object OR use string in DB
 			java.sql.Date dbSqlDate = res.getDate("year");
 			Movie tmpMovie = new Movie(movie_id, movie_title, director, "2019");
+			tmpMovie.setGenre_title(genre);
 			//System.out.println("Movie: " + tmpMovie);
 			returnList.add(tmpMovie);
 		}
