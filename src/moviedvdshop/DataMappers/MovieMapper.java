@@ -49,7 +49,39 @@ public class MovieMapper {
 			//System.out.println("Movie: " + tmpMovie);
 			returnList.add(tmpMovie);
 		}
+		res.close();
+		stmt.close();
+		myConn.close();
 		return returnList;
+	}
+	public Movie getMovieById(int movieID) throws ClassNotFoundException, SQLException {
+		Movie tmpMovie = null;
+		//TODO: hent en bestemt film
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet res = null;
+		// TODO: hent fra databasen
+		myConn = DBConnector.getConnector();
+		//String sql = "SELECT * FROM movies WHERE movie_id = ?";
+		String sql = "";
+		sql = "select m.movie_id, m.movie_title, m.director, m.year, g.genre_title";
+		sql += " FROM movies m, genres g WHERE m.genre_id = g.genre_id AND m.movie_id =?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, movieID);
+		res = pstmt.executeQuery();
+		// retrieve the result
+		while(res.next()) {
+			int movie_id = res.getInt("movie_id");
+			String movie_title = res.getString("movie_title");
+			String director = res.getString("director");
+			String genre = res.getString("genre_title");
+			//Date year = res.getDate("year");
+			//TODO: convert this to java date-object OR use string in DB
+			java.sql.Date dbSqlDate = res.getDate("year");
+			tmpMovie = new Movie(movie_id, movie_title, director, "2019");
+			tmpMovie.setGenre_title(genre);
+		}
+		return tmpMovie;
 	}
 	
 }
