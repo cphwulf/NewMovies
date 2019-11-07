@@ -22,6 +22,11 @@ public class MainMovieList {
 		return movies;
 	}
 
+	public Movie getMovieFromID(int id) throws ClassNotFoundException, SQLException {
+		Movie retValMovie = MovieMapper.getMovieById(id);
+		return  retValMovie;
+	}
+
 	public void fillListFromDB() throws ClassNotFoundException, SQLException {
 		//movies = MovieMapper.fyldMigMedFilmFraDB();
 		movies = MovieMapper.movieList();

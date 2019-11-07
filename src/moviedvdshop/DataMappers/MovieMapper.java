@@ -54,7 +54,7 @@ public class MovieMapper {
 		myConn.close();
 		return returnList;
 	}
-	public Movie getMovieById(int movieID) throws ClassNotFoundException, SQLException {
+	public static Movie getMovieById(int movieID) throws ClassNotFoundException, SQLException {
 		Movie tmpMovie = null;
 		//TODO: hent en bestemt film
 		Connection myConn = null;

@@ -45,6 +45,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		String mString = "";
+		mString += "I: "  + movie_id;
 		mString += "T: "  + movie_title;
 		mString += "D: "  + director;
 		mString += "G: "  + genre_title;

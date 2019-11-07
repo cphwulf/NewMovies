@@ -11,5 +11,10 @@ public class MovieUI {
 			System.out.println(m);
 		}
 	}
+
+	// få en enkelt film ud fra dens id
+	public static void viewMovie(Movie movie) {
+		System.out.println("Movie: " + movie);
+	}
 	
 }	

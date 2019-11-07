@@ -22,6 +22,11 @@ public class Controller {
 				case 1:
 					MovieUI.viewMovieList(movieList);
 					break;
+				case 2:
+					System.out.println("Tast nr på den film du vil se");
+					int movieID = myScanner.nextInt();
+					MovieUI.viewMovie(movieList.getMovieFromID(movieID));
+					break;
 				default:
 					System.out.println("End");
 					choice = exitValue;
