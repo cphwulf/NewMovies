@@ -1,6 +1,6 @@
 package moviedvdshop.View;
 
-public class MainRunMenu {
+public class MainRunMenuUI {
 
     public static void showMainMenu(){
         System.out.println("************************************************");

@@ -47,12 +47,13 @@ public class Movie {
 		this.genre_title = genre_title;
 	}
 
-
-
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		String mString = "";
+		mString += "T: "  + movie_title;
+		mString += "D: "  + director;
+		mString += "\n";
+		return mString;
+	}
 	
 }
