@@ -21,6 +21,7 @@ public class MovieDVDShop {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		/*
 		Connection myConnector = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -35,12 +36,13 @@ public class MovieDVDShop {
 		resultSet.close();
 		statement.close();
 		myConnector.close();
+*/
 
 
 
 		
 
-		//Controller.runProgram();
+		Controller.runProgram();
 	}
 	
 }
