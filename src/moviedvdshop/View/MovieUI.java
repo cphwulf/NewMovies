@@ -12,13 +12,8 @@ public class MovieUI {
 			System.out.println("Title" + m.getDirector());
 		}
 	}
-	public static void viewMovieById(int movieid) throws ClassNotFoundException, SQLException { 
-		Movie movie = null;
-		movie = MainMovieList.getMovieFromDBByID(movieid);
-
+	public static void viewMovieById(Movie movie) throws ClassNotFoundException, SQLException { 
 		System.out.println("Movie:" + movie);
-		
-
 	}
 	
 }	

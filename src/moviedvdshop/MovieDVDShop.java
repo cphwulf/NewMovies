@@ -42,7 +42,8 @@ public class MovieDVDShop {
 
 		
 
-		Controller.runProgram();
+		Controller controller = new Controller();
+		controller.runProgram();
 	}
 	
 }

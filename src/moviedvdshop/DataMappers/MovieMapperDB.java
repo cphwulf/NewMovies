@@ -8,9 +8,11 @@ import moviedvdshop.Util.DBConnector;
  *
  * @author thor
  */
-public class MovieMapper {
+public class MovieMapperDB implements MovieMapperI{
 	
-	public static ArrayList<Movie> movieList() throws ClassNotFoundException, SQLException {
+	
+	@Override
+	public ArrayList<Movie> getMovieList() throws ClassNotFoundException, SQLException {
 		ArrayList<Movie> returnList = new ArrayList<>();
 		/*
 		`movie_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -46,7 +48,7 @@ public class MovieMapper {
 		return returnList;
 	}
 	
-	public static Movie getMovieFromDBByID(int id) throws ClassNotFoundException, SQLException {
+	public Movie getMovieById(int id) throws ClassNotFoundException, SQLException {
 		Movie retValMovie = null;
 		//TOD: Get movie from DB
 		String query = "Select * from movies where movie_id = ?";
@@ -71,6 +73,5 @@ public class MovieMapper {
 
 		return retValMovie;
 	}
-	
 	
 }
