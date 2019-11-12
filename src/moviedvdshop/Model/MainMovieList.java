@@ -9,7 +9,7 @@ import moviedvdshop.Model.Movie;
  *
  * @author thor
  */
-public class MainMovieList implements  MainMovieListI{
+public class MainMovieList {
 	private ArrayList<Movie> movies;
 	private String storageType;
 	public MovieMapperI movieMapper = null;

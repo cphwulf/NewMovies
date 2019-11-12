@@ -1,0 +1,10 @@
+CREATE TABLE `customers` (
+  `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
+  `Email` varchar(255) DEFAULT NULL,
+  `ContactName` varchar(255) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `PostalCode` varchar(255) DEFAULT NULL,
+  `Phone` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`CustomerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8

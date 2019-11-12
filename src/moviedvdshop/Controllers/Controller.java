@@ -2,7 +2,7 @@ package moviedvdshop.Controllers;
 import java.sql.SQLException;
 import java.util.Scanner;
 import moviedvdshop.Model.MainMovieList;
-import moviedvdshop.View.MainRunMenu;
+import moviedvdshop.View.MainRunMenuUI;
 import moviedvdshop.View.MovieUI;
 
 /**
@@ -12,13 +12,15 @@ import moviedvdshop.View.MovieUI;
 public class Controller {
 		Scanner myScanner = new Scanner(System.in);
 		MainMovieList myList = null;
+		OrderHandler myOrderHandler = null;
 	public void runProgram() throws ClassNotFoundException, SQLException {
 		myList = new MainMovieList("DB");
+		myOrderHandler = new OrderHandler("DB");
 		int choice = 0;
 		int exitValue = 9;
 		
 		while(choice != exitValue) {
-			MainRunMenu.showMainMenu();
+			MainRunMenuUI.showMainMenu();
 			choice = myScanner.nextInt();
 			switch(choice) {
 				case 1:
@@ -28,6 +30,9 @@ public class Controller {
 					System.out.println("Indtast id på film");
 					int movieID = myScanner.nextInt();
 					MovieUI.viewMovieById(myList.getMovieById(movieID));
+					break;
+				case 3:
+					OrderUI.viewMovieById(myList.getMovieById(movieID));
 					break;
 				case 8:
 					System.out.println("Switch storage from " + myList.getStorageType());

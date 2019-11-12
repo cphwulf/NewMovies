@@ -1,0 +1,21 @@
+USE movies
+DROP TABLE IF EXISTS `genres`;
+CREATE TABLE `genres` (
+  `genre_id` int(11) NOT NULL,
+  `genre_title` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `genres`
+--
+
+INSERT INTO `genres` (`genre_id`, `genre_title`) VALUES
+(1, 'Fantasy'),
+(2, 'Sci-Fi'),
+(3, 'Action'),
+(4, 'Comedy'),
+(5, 'Drama'),
+(6, 'Horror'),
+(7, 'Romance'),
+(8, 'Family');
+
