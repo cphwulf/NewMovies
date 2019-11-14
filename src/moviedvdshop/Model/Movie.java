@@ -11,6 +11,7 @@ package moviedvdshop.Model;
  */
 public class Movie {
 	int movie_id;
+	double price;
 	String movie_title;
 	String director;
 	String year;
@@ -21,6 +22,19 @@ public class Movie {
 		this.movie_title = movie_title;
 		this.director = director;
 		this.year = year;
+	}
+	public Movie(int movie_id, String movie_title, double price) {
+		this.movie_id = movie_id;
+		this.movie_title = movie_title;
+		this.price = price;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public int getMovie_id() {
@@ -47,12 +61,5 @@ public class Movie {
 		this.genre_title = genre_title;
 	}
 
-
-
-	
-	
-	
-	
-	
 	
 }

@@ -1,6 +1,7 @@
 package moviedvdshop.Controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import moviedvdshop.Model.Movie;
 import moviedvdshop.Model.Order;
 import moviedvdshop.Controllers.OrderHandler;
@@ -19,6 +20,7 @@ public class OrderHandlerTest {
 	Order myOrder;
 	Order myOrder2;
 	OrderHandler myOrderHandler;
+	HashMap<String,String> myMap;
 	String pickupDate;
 	String pickupTime;
 	String pickupTime2;
@@ -47,6 +49,12 @@ public class OrderHandlerTest {
 		myOrder2.addMovie(myMovie1);
 		myOrder2.addMovie(myMovie2);
 		myOrderHandler = new OrderHandler("DB");
+		myMap = new HashMap<>();
+		myMap.put("customername", String.valueOf(88));
+		myMap.put("employeeid", String.valueOf(88));
+		myMap.put("pickupTime", "10:30");
+		myMap.put("pickupDate", pickupDate);
+		myMap.put("Movielist", "1,2,5");
 	}
 	
 	@Test
@@ -55,7 +63,6 @@ public class OrderHandlerTest {
 		assertTrue(1==1);
 		
 	}
-	@Test
 	public void testgetOrderByID() {
 		myOrderHandler.addOrderToList(myOrder);
 		myOrderHandler.addOrderToList(myOrder2);

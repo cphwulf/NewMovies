@@ -7,12 +7,13 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import moviedvdshop.Model.Order;
+import moviedvdshop.Model.Movie;
 
 public class OrderMapperFile implements OrderMapperI{
 	
 	
 	@Override
-	public ArrayList<Order> getOrders() {
+	public ArrayList<Order> getOrders(int cond) {
 		ArrayList<Order> returnList = new ArrayList<>();
 		/*
 		`movie_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,10 +48,16 @@ public class OrderMapperFile implements OrderMapperI{
 		return retValMovie;
 	}
 	public void saveOrderToStorage(Order order) {
-
+		
 	}
 	public void setOrderToArchived(Order order) {
-
+		
+	}
+	
+	public ArrayList<Movie> getMoviesFromOrder(int id) {
+		
+		ArrayList<Movie> retValArr = null;
+		return retValArr;
 	}
 	
 }

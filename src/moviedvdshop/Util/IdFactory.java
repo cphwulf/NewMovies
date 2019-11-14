@@ -10,23 +10,32 @@ import java.sql.Statement;
  * @author thor
  */
 public class IdFactory {
-	int orderid;
+	private static int orderid;
+	private static int customerid;
 	
-	public IdFactory() throws SQLException, ClassNotFoundException {
-		this.orderid = getMaxIdFromDB();
+
+	public static void init()throws SQLException, ClassNotFoundException {
+		orderid = getMaxIdFromDB("orders", "orderid");
+		customerid = getMaxIdFromDB("customers","customerid");
 	}
-	public int getOrderId() {
+
+
+	public static int getOrderId() {
+		orderid = orderid + 1;
 		return orderid;
 	}
+	public static int getCustomerId() {
+		return orderid++;
+	}
 	
-	private int getMaxIdFromDB() throws SQLException, ClassNotFoundException {
+	private static int getMaxIdFromDB(String table, String field) throws SQLException, ClassNotFoundException {
 		int res = 0;
 		Connection myConnector = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
 		myConnector = DBConnector.getConnector();
-		String query = "SELECT max(orderid) FROM orders";
+		String query = "SELECT max(" + field + ") FROM " + table;
 		statement = myConnector.createStatement();
 		resultSet = statement.executeQuery(query);
 		resultSet.first();

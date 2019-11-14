@@ -10,8 +10,9 @@ import moviedvdshop.Model.Order;
  */
 
 public interface OrderMapperI {
-	public ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException ;
+	public ArrayList<Order> getOrders(int cond) throws ClassNotFoundException, SQLException ;
 	public Order getOrderById(int id) throws ClassNotFoundException, SQLException ;
 	public void saveOrderToStorage(Order order) throws ClassNotFoundException, SQLException ;
 	public void setOrderToArchived(Order order) throws ClassNotFoundException, SQLException ;
+	public ArrayList<Movie> getMoviesFromOrder(int id) throws ClassNotFoundException, SQLException;
 }

@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/Util/DBConnector.java</file>
-            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/Util/ConnectionDetails.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/Util/IdFactory.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/MovieDVDShop.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/test/moviedvdshop/Controllers/OrderHandlerTest.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/Controllers/Controller.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/Model/Order.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/View/MainRunMenuUI.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/src/moviedvdshop/View/OrderUI.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/test/moviedvdshop/Controllers/ControllerTest.java</file>
+            <file>file:/Users/thor/NetBeansProjects/MovieDVDShop/test/moviedvdshop/Util/IdFactoryTest.java</file>
         </group>
     </open-files>
 </project-private>

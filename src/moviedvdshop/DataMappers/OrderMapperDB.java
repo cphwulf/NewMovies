@@ -54,7 +54,6 @@ public class OrderMapperDB implements OrderMapperI{
 		int orderid = order.getOrderID();
 		// nu film
 		for (Movie m :order.getMovies()) {
-			pstmt = myConnector.prepareStatement(query);
 			int movie_id = m.getMovie_id();
 			query = "INSERT INTO order_details (orderid,movie_id)";
 			query += " VALUES (?,?)";
@@ -72,25 +71,32 @@ public class OrderMapperDB implements OrderMapperI{
 	}
 	
 	@Override
-	public ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
+	public ArrayList<Order> getOrders(int cond) throws ClassNotFoundException, SQLException {
 		ArrayList<Order> returnList = new ArrayList<>();
 		Connection myConnector = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		String query = "SELECT * FROM orders order by OrderDate desc ";
 		
 		myConnector = DBConnector.getConnector();
-		String query = "SELECT * FROM orders";
+		if (cond == 1) {
+			query = "SELECT * FROM orders where archived = 0 order by pickuptime asc";
+		}
 		statement = myConnector.createStatement();
 		resultSet = statement.executeQuery(query);
 		while (resultSet.next()) {
 			int orderid = resultSet.getInt("OrderID");
 			int customerid = resultSet.getInt("customerid");
 			int employeeid = resultSet.getInt("employeeid");
-			String pickupDate = resultSet.getString("pickupdate");
-			String pickupTime = resultSet.getString("pickupTime");
+			String pickupTime = resultSet.getString("orderdate");
+			String pickupDate = resultSet.getString("pickupTime");
 			int archived = resultSet.getInt("archived");
 			//(int customerID, int employeeID,String pickupTime , String pickupDate)
 			Order tmpOrder = new Order(customerid,employeeid, pickupDate,pickupTime);
+			ArrayList<Movie> tmpMovies = getMoviesFromOrder(orderid);
+			for (Movie m: tmpMovies) {
+				tmpOrder.addMovie(m);
+			}
 			tmpOrder.setArchived(archived);
 			tmpOrder.setOrderID(orderid);
 			returnList.add(tmpOrder);
@@ -120,6 +126,33 @@ public class OrderMapperDB implements OrderMapperI{
 	}
 	
 
+	@Override
+	public ArrayList<Movie> getMoviesFromOrder(int id) throws ClassNotFoundException, SQLException {
+		ArrayList<Movie> orderMovies = new ArrayList<>();
+		String query = "Select od.movie_id, m.movie_title, m.price from order_details od ";
+		query += " INNER JOIN movies m on od.movie_id = m.movie_id";
+		query += " WHERE od.OrderId = ?";
+		
+		Connection myConnector = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+		myConnector = DBConnector.getConnector();
+		
+		pstmt = myConnector.prepareStatement(query);
+		pstmt.setInt(1, id);
+		resultSet = pstmt.executeQuery();
+		while(resultSet.next()){
+			int movie_id = resultSet.getInt("movie_id");
+			double price = resultSet.getDouble("price");
+			String movie_title = resultSet.getString("movie_title");
+			Movie tmpMovie = new Movie(movie_id, movie_title, price);
+			orderMovies.add(tmpMovie);
+		}
+		resultSet.close();
+		pstmt.close();
+		myConnector.close();
+		return orderMovies;
+	}
 	
 	@Override
 	public Order getOrderById(int id) throws ClassNotFoundException, SQLException {

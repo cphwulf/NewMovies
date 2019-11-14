@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 /**
- *
+
  * @author thor
  */
 public class MovieDVDShop {
