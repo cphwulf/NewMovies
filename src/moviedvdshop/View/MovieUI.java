@@ -9,7 +9,7 @@ public class MovieUI {
 
 	public static void viewMovieList(MainMovieList movieList) { 
 		for (Movie m : movieList.getMovieList()) {
-			System.out.println("Title" + m.getDirector());
+			System.out.println(m);
 		}
 	}
 	public static void viewMovieById(Movie movie) throws ClassNotFoundException, SQLException { 
